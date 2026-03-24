@@ -3,12 +3,12 @@
 <head>
   <!-- =========================================================
     WORKFLOW STACK
-    File:       zengine_v1.4.0.html
+    File:       zengine_v1.6.0.html
     Brand:      Zengine™
     Author:     © 2026 Zengine™ | www.zengine.org
-    Version:    v1.4.0
-    Date:       2026-03-23
-    /* ===== LAST STABLE: v1.3.0 — 2026-03-23 ===== */
+    Version:    v1.6.0
+    Date:       2026-03-24
+    /* ===== LAST STABLE: v1.5.0 — 2026-03-24 ===== */
     Target:     Desktop-primary, mobile responsive (hamburger only)
     Browser:    Chrome 100+, Firefox 100+, Safari 15+
 
@@ -678,42 +678,6 @@
       margin-right: 6px;
     }
 
-    /* ===== ARCADE SIDEBAR MENTION ===== */
-    #arcade-sidebar {
-      padding: 48px 80px;
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      background: var(--bg);
-      border-bottom: 1px solid var(--muted2);
-    }
-    .arcade-label {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted2);
-      white-space: nowrap;
-    }
-    .arcade-text {
-      font-family: var(--font-body);
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.5;
-      max-width: 480px;
-    }
-    .arcade-link {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border-bottom: 1px solid rgba(255,200,48,0.3);
-      transition: border-color 0.2s;
-      white-space: nowrap;
-    }
-    .arcade-link:hover { border-color: var(--gold); }
-
     /* ===== FOOTER ===== */
     footer {
       padding: 40px 80px;
@@ -792,7 +756,6 @@
       .studio-cols { grid-template-columns: 1fr; gap: 32px; }
       .catalog-grid { grid-template-columns: repeat(2, 1fr); }
 
-      #arcade-sidebar { padding: 32px 28px; flex-wrap: wrap; gap: 16px; }
       footer { padding: 32px 28px; flex-direction: column; align-items: flex-start; }
 
       .hero-bg-zg { left: -120px; opacity: 0.07; }
@@ -802,11 +765,302 @@
       .catalog-grid { grid-template-columns: 1fr 1fr; }
     }
 
+    /* ===== OTHER BUSINESSES ===== */
+    #other-biz {
+      background: var(--bg2);
+      border-top: 1px solid var(--muted2);
+    }
+
+    /* Sympolar featured ad card */
+    .sympolar-card {
+      position: relative;
+      cursor: pointer;
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: stretch;
+      min-height: 110px;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      background: rgba(59,143,255,0.04);
+    }
+    .sympolar-card:hover {
+      border-color: #3b8fff;
+      box-shadow: 0 4px 32px rgba(59,143,255,0.12);
+    }
+    .sympolar-img {
+      width: 160px;
+      height: 100%;
+      object-fit: cover;
+      flex-shrink: 0;
+      opacity: 0.85;
+    }
+    .sympolar-svg-ph {
+      width: 160px;
+      flex-shrink: 0;
+    }
+    .sympolar-info {
+      padding: 20px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+    }
+    .sympolar-name {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+    .sympolar-tagline {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .sympolar-url {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #3b8fff;
+      margin-top: 6px;
+    }
+
+    /* Biz link list */
+    .biz-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .biz-list li {
+      border-top: 1px solid var(--muted2);
+    }
+    .biz-list li:last-child {
+      border-bottom: 1px solid var(--muted2);
+    }
+    .biz-list li a {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      padding: 16px 0;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .biz-list li a:hover .biz-name { color: var(--gold); }
+    .biz-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      white-space: nowrap;
+      transition: color 0.2s;
+      min-width: 200px;
+    }
+    .biz-desc {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ===== KONAMI EASTER EGG OVERLAY ===== */
+    #konami-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(7,6,15,0.97);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+      cursor: pointer;
+    }
+    #konami-overlay.open { display: flex; }
+    #konami-img {
+      max-width: min(480px, 90vw);
+      max-height: 60vh;
+      object-fit: contain;
+      border-radius: 8px;
+      animation: konamiPop 0.5s var(--ease-out) forwards;
+    }
+    #konami-text {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 10vw, 96px);
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      text-shadow: 0 0 60px rgba(255,200,48,0.6);
+      animation: konamiPop 0.6s 0.1s var(--ease-out) both;
+    }
+    #konami-sub {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      animation: konamiPop 0.6s 0.25s var(--ease-out) both;
+    }
+    @keyframes konamiPop {
+      from { opacity: 0; transform: scale(0.85); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
     /* ===== SCROLLBAR ===== */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--muted2); border-radius: 2px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+    /* ===== MOBILE — OTHER BIZ ===== */
+    @media (max-width: 600px) {
+      .sympolar-card { flex-direction: column; }
+      .sympolar-img, .sympolar-svg-ph { width: 100%; height: 80px; }
+      .biz-list li a { flex-direction: column; gap: 4px; }
+      .biz-name { min-width: unset; font-size: 18px; }
+    }
+
+    /* ===== PRODUCT MODAL ===== */
+    #modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(7,6,15,0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    #modal-backdrop.open { display: flex; }
+
+    #modal-box {
+      position: relative;
+      background: var(--bg2);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      width: 100%;
+      max-width: 680px;
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: modalIn 0.35s var(--ease-out) forwards;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(24px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    #modal-thumb-wrap {
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      border-radius: 10px 10px 0 0;
+      position: relative;
+      background: var(--bg);
+    }
+    #modal-thumb {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    #modal-svg-placeholder {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      display: none;
+    }
+    #modal-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,11,26,0.85) 0%, transparent 60%);
+    }
+
+    #modal-body {
+      padding: 28px 32px 36px;
+    }
+    #modal-num {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    #modal-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    #modal-name {
+      font-family: var(--font-display);
+      font-size: 42px;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    #modal-desc {
+      font-family: var(--font-body);
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: rgba(242,240,255,0.75);
+      margin-bottom: 28px;
+    }
+    #modal-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 12px 24px;
+      background: var(--gold);
+      color: #07060f;
+      border-radius: 4px;
+      font-weight: 700;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    #modal-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(255,200,48,0.32);
+    }
+    #modal-cta.disabled {
+      background: var(--muted2);
+      color: var(--muted);
+      cursor: default;
+      pointer-events: none;
+    }
+
+    #modal-close {
+      position: absolute;
+      top: 14px; right: 14px;
+      z-index: 10;
+      width: 32px; height: 32px;
+      background: rgba(13,11,26,0.7);
+      border: 1px solid var(--glass-border);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.2s, background 0.2s;
+    }
+    #modal-close:hover { color: var(--white); background: rgba(255,200,48,0.15); }
+
+    /* make catalog + featured cards feel clickable */
+    .app-card { cursor: pointer; }
+    .featured-card { cursor: pointer; }
   </style>
 </head>
 <body>
@@ -839,7 +1093,10 @@
       <li><a href="#studio" data-section="studio">
         <span class="nav-icon">◉</span> Studio
       </a></li>
-      <li><a href="https://portfolio.zengine.org" target="_blank" rel="noopener noreferrer">
+      <li><a href="#other-biz" data-section="other-biz">
+        <span class="nav-icon">⬡</span> Ecosystem
+      </a></li>
+      <li><a href="https://portfolio.zengine.site" target="_blank" rel="noopener noreferrer">
         <span class="nav-icon">↗</span> Portfolio
       </a></li>
       <li><a href="https://zengin.es" target="_blank" rel="noopener noreferrer">
@@ -910,7 +1167,7 @@
       <div class="featured-grid reveal">
 
         <!-- #01 PlumHUD — img file: 01-plumhud.png -->
-        <div class="featured-card" onclick="window.open('https://github.com/zengineco/plumhud','_blank','noopener,noreferrer')">
+        <div class="featured-card" data-modal-index="0">
           <img class="fc-thumb" src="/assets/01-plumhud.png" alt="PlumHUD"
             onerror="this.style.display='none';this.nextElementSibling.style.removeProperty('display');" />
           <svg class="fc-svg-placeholder" style="display:none" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
@@ -942,7 +1199,7 @@
         </div>
 
         <!-- #05 LeadSeer — img file: 05-leadseer.png -->
-        <div class="featured-card" onclick="window.open('https://github.com/zengineco/leadseer','_blank','noopener,noreferrer')">
+        <div class="featured-card" data-modal-index="4">
           <img class="fc-thumb" src="/assets/05-leadseer.png" alt="LeadSeer"
             onerror="this.style.display='none';this.nextElementSibling.style.removeProperty('display');" />
           <svg class="fc-svg-placeholder" style="display:none" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
@@ -974,7 +1231,7 @@
         </div>
 
         <!-- #02 ChannelCast — img file: 02-channelcast.png -->
-        <div class="featured-card">
+        <div class="featured-card" data-modal-index="1">
           <img class="fc-thumb" src="/assets/02-channelcast.png" alt="ChannelCast"
             onerror="this.style.display='none';this.nextElementSibling.style.removeProperty('display');" />
           <svg class="fc-svg-placeholder" style="display:none" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
@@ -1004,7 +1261,7 @@
         </div>
 
         <!-- #17 F-Keys — img file: 17-fkeys.png -->
-        <div class="featured-card" onclick="window.open('https://f-keys.com','_blank','noopener,noreferrer')">
+        <div class="featured-card" data-modal-index="16" onclick="void(0)">
           <img class="fc-thumb" src="/assets/17-fkeys.png" alt="F-Keys"
             onerror="this.style.display='none';this.nextElementSibling.style.removeProperty('display');" />
           <svg class="fc-svg-placeholder" style="display:none" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
@@ -1081,18 +1338,86 @@
       </div>
     </section>
 
-    <!-- ARCADE SIDEBAR MENTION -->
-    <div id="arcade-sidebar">
-      <span class="arcade-label">Sidebar</span>
-      <p class="arcade-text">The Zengine arcade — 21 browser games, six zones, live GitHub widget.</p>
-      <a href="https://zengin.es" target="_blank" rel="noopener noreferrer" class="arcade-link">zengin.es →</a>
-    </div>
+    <!-- OTHER BUSINESSES -->
+    <section id="other-biz">
+      <div class="section-label">Check Out My Other Businesses</div>
+      <div class="section-title reveal">The Ecosystem</div>
+
+      <!-- Sympolar featured ad card -->
+      <div class="sympolar-card reveal" onclick="window.open('https://sympolar.com','_blank','noopener,noreferrer')">
+        <img src="/assets/99-sympolar.png" alt="SymPolar LLC"
+          class="sympolar-img"
+          onerror="this.style.display='none';this.nextElementSibling.style.removeProperty('display');" />
+        <svg class="sympolar-svg-ph" style="display:none" viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="900" height="200" fill="#08101a"/>
+          <circle cx="100" cy="100" r="60" fill="#3b8fff" opacity="0.08"/>
+          <text x="100" y="108" font-family="'Bebas Neue',Impact,fantasy" font-size="32" fill="white" opacity="0.12" text-anchor="middle">SP</text>
+        </svg>
+        <div class="sympolar-info">
+          <div class="sympolar-name">SymPolar LLC</div>
+          <div class="sympolar-tagline">Full website service &nbsp;·&nbsp; $60/Month &nbsp;·&nbsp; Terms apply</div>
+          <div class="sympolar-url">sympolar.com →</div>
+        </div>
+      </div>
+
+      <!-- Horizontal link list -->
+      <ul class="biz-list reveal">
+        <li>
+          <a href="https://sympolar.com" target="_blank" rel="noopener noreferrer">
+            <span class="biz-name">Sympolar.com</span>
+            <span class="biz-desc">Website design &amp; hosting, flat rate</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://5best2buy.com" target="_blank" rel="noopener noreferrer">
+            <span class="biz-name">5Best2Buy.com</span>
+            <span class="biz-desc">Affiliate review engine</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://f-keys.com" target="_blank" rel="noopener noreferrer">
+            <span class="biz-name">F-Keys.com</span>
+            <span class="biz-desc">Custom keypad for tablet &amp; phone</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://dogefundme.com" target="_blank" rel="noopener noreferrer">
+            <span class="biz-name">DogeFundMe.com</span>
+            <span class="biz-desc">Custom QR to fund a crypto destination</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://tipstreams.com" target="_blank" rel="noopener noreferrer">
+            <span class="biz-name">TipStreams.com</span>
+            <span class="biz-desc">QR gen for streamers &amp; crypto pay links</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://qbzai.com" target="_blank" rel="noopener noreferrer">
+            <span class="biz-name">QbzAI.com</span>
+            <span class="biz-desc">AIServ Portal — replacing the workforce</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://zengin.es" target="_blank" rel="noopener noreferrer">
+            <span class="biz-name">Zengin.es</span>
+            <span class="biz-desc">Original content gaming arcade — standalone product category</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://zengine.site" target="_blank" rel="noopener noreferrer">
+            <span class="biz-name">Zengine.site</span>
+            <span class="biz-desc">Streaming platform — launch your career into multiplatform dominance</span>
+          </a>
+        </li>
+      </ul>
+    </section>
 
     <!-- FOOTER -->
     <footer>
       <div class="footer-brand">ZEN<span>G</span>INE™</div>
       <div class="footer-links">
-        <a href="https://portfolio.zengine.org">Portfolio</a>
+        <a href="https://portfolio.zengine.site">Portfolio</a>
         <a href="https://zengin.es">Arcade</a>
         <a href="https://f-keys.com">F-Keys</a>
         <a href="/privacy.html">Privacy</a>
@@ -1103,6 +1428,34 @@
     </footer>
 
   </main><!-- /main -->
+
+  <!-- KONAMI EASTER EGG — hidden until ↑↑↓↓←→←→BA -->
+  <div id="konami-overlay" onclick="closeKonami()" title="click to dismiss">
+    <img id="konami-img" src="/assets/69-easteregg.png" alt="byte me"
+      onerror="this.style.display='none';" />
+    <div id="konami-text">BYTE ME!</div>
+    <div id="konami-sub">↑ ↑ ↓ ↓ ← → ← → B A &nbsp;·&nbsp; click to dismiss</div>
+  </div>
+
+  <!-- PRODUCT MODAL -->
+  <div id="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-name">
+    <div id="modal-box">
+      <button id="modal-close" aria-label="Close">✕</button>
+      <div id="modal-thumb-wrap">
+        <img id="modal-thumb" src="" alt=""
+          onerror="this.style.display='none';document.getElementById('modal-svg-placeholder').style.display='block';" />
+        <svg id="modal-svg-placeholder" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"></svg>
+        <div id="modal-thumb-overlay"></div>
+      </div>
+      <div id="modal-body">
+        <div id="modal-num"></div>
+        <div id="modal-tag"></div>
+        <div id="modal-name"></div>
+        <div id="modal-desc"></div>
+        <a id="modal-cta" href="#" target="_blank" rel="noopener noreferrer">Visit →</a>
+      </div>
+    </div>
+  </div>
 
   <script>
     // BOOT ORDER:
@@ -1116,44 +1469,183 @@
     var SCROLL_SPY_OFFSET  = 120;        // px from top to trigger active nav
 
     /* ===== APP DATA ===== */
-    // READS: nothing  WRITES: #catalog-grid innerHTML
-    // NUMBERING: num = filename prefix (e.g. num:'01' → /assets/01-plumhud.png)
-    // DUPLICATE: shared image noted in comment — rename both files to same source
+    // READS: nothing  WRITES: #catalog-grid innerHTML + modal
+    // num    = filename prefix → /assets/[num]-[slug].png
+    // url    = '#' means coming soon (modal CTA disables)
+    // Pi family (#11–#13) = product line under PiForge (#14) umbrella
     var APPS = [
-      { num:'01', slug:'plumhud',       name:'PlumHUD',        tag:'Python · Desktop',     url:'https://github.com/zengineco/plumhud',     c1:'#1a0a2e', c2:'#0d1a3a', accent:'#ffc830' },
-      { num:'02', slug:'channelcast',   name:'ChannelCast',    tag:'Streaming · Hardware', url:'#',                                         c1:'#1a0a0a', c2:'#2a0a1a', accent:'#e040fb' },
-      { num:'03', slug:'telegaming',    name:'TeleGaming',     tag:'Hardware · App',       url:'#',                                         c1:'#0a1a0a', c2:'#0a0a1a', accent:'#3b8fff' },
-      { num:'04', slug:'wannabet',      name:'WannaBet?',      tag:'Browser · Game',       url:'#',                                         c1:'#1a1a0a', c2:'#2a1a00', accent:'#ffc830' },
-      { num:'05', slug:'leadseer',      name:'LeadSeer',       tag:'Electron · Lead Gen',  url:'https://github.com/zengineco/leadseer',     c1:'#0a1a0e', c2:'#1a2a0a', accent:'#ffc830' },
-      { num:'06', slug:'retailtrader',  name:'Retail Trader',  tag:'Finance · Web',        url:'#',                                         c1:'#0a1a0a', c2:'#00140a', accent:'#3b8fff' },
-      { num:'07', slug:'keyj',          name:'Key-J',          tag:'Electron · Audio',     url:'#',                                         c1:'#0a0a1a', c2:'#1a0a2e', accent:'#e040fb' },
-      { num:'08', slug:'pixelstaff',    name:'Pixel Staff',    tag:'NES · Audio',          url:'#',                                         c1:'#1a0a1a', c2:'#0a001a', accent:'#e040fb' },
-      { num:'09', slug:'filterfluff',   name:'FilterFluff',    tag:'Browser · Utility',    url:'#',                                         c1:'#0a0e1a', c2:'#0a1a1a', accent:'#3b8fff' },
-      { num:'10', slug:'win31wrap',     name:'Win3.1Wrap',     tag:'Nostalgia · Browser',  url:'#',                                         c1:'#1a1818', c2:'#0e0e18', accent:'#ffc830' },
-      { num:'11', slug:'moonberrypi',   name:'MoonBerry Pi',   tag:'Hardware · Pi',        url:'#',                                         c1:'#0a0a1a', c2:'#1a0a2e', accent:'#3b8fff' },
-      { num:'12', slug:'rhubarbpi',     name:'Rhubarb Pi',     tag:'Hardware · Pi',        url:'#',                                         c1:'#1a0a0a', c2:'#2a0808', accent:'#e040fb' },
-      // #13 shares same Pi hardware visual family as #11 — can reuse 11-moonberrypi.png if needed
-      { num:'13', slug:'wildlettucepi', name:'Wild Lettuce Pi',tag:'Hardware · Pi',        url:'#',                                         c1:'#0a1a0a', c2:'#0a1408', accent:'#3b8fff' },
-      { num:'14', slug:'piforge',       name:'PiForge',        tag:'Hardware · Platform',  url:'#',                                         c1:'#1a0e00', c2:'#2a1600', accent:'#ffc830' },
-      { num:'15', slug:'moonbeam',      name:'Moonbeam',       tag:'Web · App',            url:'#',                                         c1:'#06060f', c2:'#0a0820', accent:'#3b8fff' },
-      { num:'16', slug:'aiservportal',  name:'AIServ Portal',  tag:'AI · Enterprise',      url:'#',                                         c1:'#06060f', c2:'#0f0b1a', accent:'#e040fb' },
-      { num:'17', slug:'fkeys',         name:'F-Keys',         tag:'Web App · f-keys.com', url:'https://f-keys.com',                        c1:'#0a0a1a', c2:'#1a1a2e', accent:'#3b8fff' },
-      { num:'18', slug:'tipstreams',    name:'TipStreams',      tag:'Crypto · Web',         url:'#',                                         c1:'#0a1a0a', c2:'#001a14', accent:'#ffc830' },
-      { num:'19', slug:'dogefundme',    name:'DogeFundMe',     tag:'Doge · Web',           url:'https://dogefundme.com',                    c1:'#1a1200', c2:'#2a1e00', accent:'#ffc830' },
-      { num:'20', slug:'bigbet',        name:'BigBet',         tag:'Browser · Game',       url:'#',                                         c1:'#1a0a00', c2:'#2a1400', accent:'#ffc830' },
-      { num:'21', slug:'lockin',        name:'Lock-In',        tag:'Simulator · Browser',  url:'https://zengine.org/lockin',               c1:'#0a0e1a', c2:'#0a1420', accent:'#3b8fff' }
+      {
+        num:'01', slug:'plumhud', name:'PlumHUD',
+        tag:'Python · Desktop App',
+        url:'https://github.com/zengineco/plumhud',
+        desc:'A full-featured async crypto miner fleet monitor built in Python and Tkinter. PlumHUD polls your rigs in real time via aiohttp, logs analytics to a local SQLite backend, and fires Discord webhook alerts when something goes wrong. Ships with five skin presets, four HUD display modes, and a GitHub Actions PyInstaller pipeline for one-click builds.',
+        c1:'#1a0a2e', c2:'#0d1a3a', accent:'#ffc830'
+      },
+      {
+        num:'02', slug:'channelcast', name:'ChannelCast',
+        tag:'Streaming · Hardware · App',
+        url:'#',
+        desc:'Underground independent streaming channel infrastructure with no gatekeepers and no algorithmic interference. ChannelCast is the backbone of a creator-first broadcast stack — built for artists, communities, and studios who want to own their channel completely.',
+        c1:'#1a0a0a', c2:'#2a0a1a', accent:'#e040fb'
+      },
+      {
+        num:'03', slug:'telegaming', name:'TeleGaming',
+        tag:'Web App · Telegram · Gaming',
+        url:'#',
+        desc:'A web application that streams and plays games directly through Telegram. TeleGaming bridges your favorite browser-based titles with the Telegram ecosystem, letting you launch, play, and share sessions without ever leaving the app.',
+        c1:'#0a0a1a', c2:'#0a1a2a', accent:'#3b8fff'
+      },
+      {
+        num:'04', slug:'wannabet', name:'WannaBet?',
+        tag:'Browser · Synchronized Casino',
+        url:'#',
+        desc:'A 12-game synchronized spectator casino built as a static single-page app. Eight players, one seeded PRNG, zero house edge manipulation. Every roll, spin, and draw is reproducible and verifiable — a fair-game experiment wrapped in a party-night interface.',
+        c1:'#1a1a0a', c2:'#2a1a00', accent:'#ffc830'
+      },
+      {
+        num:'05', slug:'leadseer', name:'LeadSeer',
+        tag:'Electron · React · Lead Intelligence',
+        url:'https://github.com/zengineco/leadseer',
+        desc:'Find businesses that have no website using the Google Places API. LeadSeer surfaces unclaimed digital territory — a goldmine for agencies, sales teams, and solo operators. Available as a Streamlit Python app or a full Electron + React desktop application with persistent search history.',
+        c1:'#0a1a0e', c2:'#1a2a0a', accent:'#ffc830'
+      },
+      {
+        num:'06', slug:'retailtrader', name:'Retail Trader',
+        tag:'Finance · Multi-Market Terminal',
+        url:'#',
+        desc:'A DIY Bloomberg for the rest of us. Retail Trader is a top-tier, professional-grade multi-market terminal built for speed, depth, and accessibility — combining open-source data pipelines into a proprietary, interactive interface with live scanners, custom notification systems, and a layout that actually thinks like a trader.',
+        c1:'#0a1a0a', c2:'#00140a', accent:'#3b8fff'
+      },
+      {
+        num:'07', slug:'keyj', name:'Key-J',
+        tag:'Electron · Desktop · Audio Engine',
+        url:'#',
+        desc:'An Electron-powered desktop keystroke-to-audio engine that maps your keyboard to any sound palette you design. Key-J includes a Melody Lock feature for composing and locking in melodic sequences, turning any workstation into a performance instrument.',
+        c1:'#0a0a1a', c2:'#1a0a2e', accent:'#e040fb'
+      },
+      {
+        num:'08', slug:'pixelstaff', name:'Pixel Staff',
+        tag:'NES Aesthetic · Audio · Composition',
+        url:'#',
+        desc:'A 96-row piano roll composition tool wrapped in a full NES aesthetic. Pixel Staff lets you build 8-bit-flavored tracks from scratch and export them as WAV or .m4r ringtone files — no DAW required, no setup, just open and play.',
+        c1:'#1a0a1a', c2:'#0a001a', accent:'#e040fb'
+      },
+      {
+        num:'09', slug:'filterfluff', name:'FilterFluff',
+        tag:'AI · Content Intelligence · Browser',
+        url:'#',
+        desc:'An interactive, trainable content scalpel that learns what matters to you and cuts everything else. FilterFluff eliminates fluff from websites, documents, ads, and everyday discourse in real time — surfacing the signal as a live recap and summary. The more you train it, the sharper it gets.',
+        c1:'#0a0e1a', c2:'#0a1a1a', accent:'#3b8fff'
+      },
+      {
+        num:'10', slug:'win31wrap', name:'Win3.1Wrap',
+        tag:'Nostalgia · Browser · UI Skin',
+        url:'#',
+        desc:'A Windows 3.1 UI skin and nostalgia browser experience that wraps modern web content in the iconography and interaction patterns of 1992. Win3.1Wrap is part art project, part functional shell — for those who remember when double-clicking meant something.',
+        c1:'#1a1818', c2:'#0e0e18', accent:'#ffc830'
+      },
+      {
+        num:'11', slug:'moonberrypi', name:'MoonBerry Pi',
+        tag:'Hardware · Pi · PiForge Family',
+        url:'#',
+        desc:'A Raspberry Pi appliance in the PiForge product family. MoonBerry Pi ships with a custom setup wizard and systemd auto-start for hands-free deployment straight out of the box. Part of a growing line of purpose-built Pi devices under the PiForge platform.',
+        c1:'#0a0a1a', c2:'#1a0a2e', accent:'#3b8fff'
+      },
+      {
+        num:'12', slug:'rhubarbpi', name:'Rhubarb Pi',
+        tag:'Hardware · Pi · PiForge Family',
+        url:'#',
+        desc:'A Raspberry Pi appliance in the PiForge product family, purpose-built for a distinct deployment use case. Like all PiForge devices, Rhubarb Pi includes a branded setup wizard and systemd service for reliable, always-on operation.',
+        c1:'#1a0a0a', c2:'#2a0808', accent:'#e040fb'
+      },
+      {
+        num:'13', slug:'wildlettucepi', name:'Wild Lettuce Pi',
+        tag:'Hardware · Pi · PiForge Family',
+        url:'#',
+        desc:'A Raspberry Pi appliance in the PiForge product family. Wild Lettuce Pi rounds out the current Pi lineup with its own dedicated function, setup wizard, and systemd auto-start pipeline. More PiForge devices are in development.',
+        c1:'#0a1a0a', c2:'#0a1408', accent:'#3b8fff'
+      },
+      {
+        num:'14', slug:'piforge', name:'PiForge',
+        tag:'Hardware · Platform · Raspberry Pi',
+        url:'#',
+        desc:'The platform behind the Pi appliance family. PiForge is Zengine\'s Raspberry Pi development and deployment framework — standardizing setup wizards, systemd service pipelines, and hardware packaging across MoonBerry Pi, Rhubarb Pi, Wild Lettuce Pi, and future devices. Build once, deploy anywhere on Pi.',
+        c1:'#1a0e00', c2:'#2a1600', accent:'#ffc830'
+      },
+      {
+        num:'15', slug:'moonbeam', name:'Moonbeam',
+        tag:'Hardware · Concept · BTC Mining',
+        url:'#',
+        desc:'A proprietary hardware concept: a self-sustaining Bitcoin miner powered by a USB-C connection and eventually solar energy — designed as a digital flower that grows on its own. Moonbeam is a lifetime lottery ticket in physical form. Currently in conceptualization phase.',
+        c1:'#06060f', c2:'#0a0820', accent:'#3b8fff'
+      },
+      {
+        num:'16', slug:'aiservportal', name:'AIServ Portal',
+        tag:'AI · Enterprise · Coming Soon',
+        url:'#',
+        desc:'The replacement of the entire modern office. AIServ Portal is Zengine\'s most ambitious enterprise product — a complete AI services platform engineered to redefine how teams operate. Stay tuned.',
+        c1:'#06060f', c2:'#0f0b1a', accent:'#e040fb'
+      },
+      {
+        num:'17', slug:'fkeys', name:'F-Keys',
+        tag:'Web App · Customizable Keypad',
+        url:'https://f-keys.com',
+        desc:'Turn your tablet or phone into a fully customizable keypad. F-Keys is a standalone web application at f-keys.com that transforms any touchscreen into a programmable control surface — macros, shortcuts, media keys, and custom actions, no hardware required.',
+        c1:'#0a0a1a', c2:'#1a1a2e', accent:'#3b8fff'
+      },
+      {
+        num:'18', slug:'tipstreams', name:'TipStreams',
+        tag:'Web App · QR · Tipping',
+        url:'https://tipstreams.com',
+        desc:'A free QR code generator built for streamers and small businesses. TipStreams lets you create and share a custom tip page in seconds — no account required, no fees taken. Available across multiple platforms and continuously expanding.',
+        c1:'#0a1a0a', c2:'#001a14', accent:'#ffc830'
+      },
+      {
+        num:'19', slug:'dogefundme', name:'DogeFundMe',
+        tag:'Doge · Web · QR Tip Generator',
+        url:'https://dogefundme.com',
+        desc:'A Dogecoin QR tip generator and community-funded destination concept. Drop your wallet address, generate a shareable QR page, and let the community fund your next move — built as a single-file GitHub Pages site. Much tip. Very \'gine.',
+        c1:'#1a1200', c2:'#2a1e00', accent:'#ffc830'
+      },
+      {
+        num:'20', slug:'bigbet', name:'BigBet',
+        tag:'Browser · High-Stakes Game',
+        url:'#',
+        desc:'A browser-based high-stakes betting game built on Zengine\'s fair-game PRNG architecture. BigBet is the full-pressure counterpart to WannaBet? — higher stakes, higher tension, same zero-manipulation seed system under the hood.',
+        c1:'#1a0a00', c2:'#2a1400', accent:'#ffc830'
+      },
+      {
+        num:'21', slug:'lockin', name:'Lock-In',
+        tag:'Browser · Freight Simulator',
+        url:'https://trailer-load.com',
+        desc:'A browser-based freight trailer loading simulator with a full perspective renderer, 130+ piece freight pool, real physics (integrity, center of gravity, collapse, fragile crush, bulkhead lock, brick lock), and a panic phase system. Born from real-world hub freight experience and years of iteration from Wall Class through LI7. A Zengine legacy project.',
+        c1:'#0a0e1a', c2:'#0a1420', accent:'#3b8fff'
+      },
+      {
+        num:'22', slug:'lamp', name:'LAMP',
+        tag:'Platform · In Development',
+        url:'#',
+        desc:'Large Area Multiverse Protocol. LAMP is Zengine\'s most expansive platform concept — a multiverse-scale environment designed to host an ecosystem of interconnected experiences, communities, and products. Currently in development. The foundation everything else will run on.',
+        c1:'#0a0a1a', c2:'#1a0a2e', accent:'#e040fb'
+      },
+      {
+        num:'23', slug:'micdrop', name:'Mic Drop',
+        tag:'LAMP · Open Mic · Live Rooms',
+        url:'#',
+        desc:'The first destination inside LAMP. Mic Drop is the biggest open mic on the internet — public and private rooms, live performance infrastructure, and a comedy-night-first identity inspired by the spirit of the original Xbox 360 era. Show up, grab the mic, drop it.',
+        c1:'#1a0a00', c2:'#2a0a10', accent:'#ffc830'
+      }
     ];
 
     /* ===== RENDER CATALOG ===== */
     // READS: APPS, CATALOG_THUMB_BASE  WRITES: #catalog-grid innerHTML
-    // Each card tries /assets/[num]-[slug].png first; falls back to inline SVG placeholder
     function renderCatalog() {
       try {
         var grid = document.getElementById('catalog-grid');
         if (!grid) { console.error('renderCatalog(): #catalog-grid not found'); return; }
         var html = '';
         for (var i = 0; i < APPS.length; i++) {
-          var app = APPS[i];
+          var app    = APPS[i];
           var imgSrc = CATALOG_THUMB_BASE + app.num + '-' + app.slug + '.png';
           var svgId  = 'svg-ph-' + app.num;
           var accent = app.accent || '#ffc830';
@@ -1161,7 +1653,6 @@
           var c2     = app.c2    || '#07060f';
           var gradId = 'gc' + app.num;
 
-          // Inline SVG placeholder — unique gradient per card
           var svgPlaceholder =
             '<svg id="' + svgId + '" class="ac-svg-placeholder" viewBox="0 0 400 300"' +
             ' xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">' +
@@ -1170,20 +1661,17 @@
             '<stop offset="100%" stop-color="' + c2 + '"/>' +
             '</linearGradient></defs>' +
             '<rect width="400" height="300" fill="url(#' + gradId + ')"/>' +
-            // abstract shape — varies by accent
             '<circle cx="320" cy="60" r="80" fill="' + accent + '" opacity="0.06"/>' +
             '<rect x="24" y="200" width="80" height="4" rx="2" fill="' + accent + '" opacity="0.18"/>' +
             '<rect x="24" y="212" width="52" height="4" rx="2" fill="' + accent + '" opacity="0.1"/>' +
-            // number watermark
             '<text x="200" y="175" font-family="\'Bebas Neue\',Impact,fantasy" font-size="96"' +
             ' fill="white" opacity="0.04" text-anchor="middle" letter-spacing="2">' + app.num + '</text>' +
-            // label
             '<text x="24" y="28" font-family="\'Bebas Neue\',Impact,fantasy" font-size="9"' +
             ' fill="' + accent + '" opacity="0.45" letter-spacing="2">' +
             app.num + ' · ' + app.name.toUpperCase() + '</text>' +
             '</svg>';
 
-          html += '<div class="app-card" onclick="openApp(\'' + app.url + '\')" title="' + app.name + '">';
+          html += '<div class="app-card" onclick="openModal(' + i + ')" title="' + app.name + '">';
           html += '<div class="ac-shine"></div>';
           html += '<div class="ac-thumb-wrap">';
           html += '<img class="ac-thumb" src="' + imgSrc + '" alt="' + app.name + '"' +
@@ -1209,6 +1697,123 @@
         if (win) { win.opener = null; }
       } catch(e) {
         console.error('openApp(): failed —', e);
+      }
+    }
+
+    /* ===== MODAL ===== */
+    // READS: APPS[index], /assets/[num]-[slug].png  WRITES: #modal-* elements, body class
+    // BOOT ORDER: initModal() called in DOMContentLoaded after renderCatalog
+
+    function openModal(index) {
+      try {
+        var app      = APPS[index];
+        if (!app) { console.error('openModal(): invalid index ' + index); return; }
+        var backdrop = document.getElementById('modal-backdrop');
+        var thumb    = document.getElementById('modal-thumb');
+        var svgPh    = document.getElementById('modal-svg-placeholder');
+        var numEl    = document.getElementById('modal-num');
+        var tagEl    = document.getElementById('modal-tag');
+        var nameEl   = document.getElementById('modal-name');
+        var descEl   = document.getElementById('modal-desc');
+        var ctaEl    = document.getElementById('modal-cta');
+
+        if (!backdrop || !thumb || !svgPh || !numEl || !tagEl || !nameEl || !descEl || !ctaEl) {
+          console.error('openModal(): modal DOM elements missing'); return;
+        }
+
+        // Populate text
+        numEl.textContent  = app.num + ' / 21';
+        tagEl.textContent  = app.tag;
+        nameEl.textContent = app.name;
+        descEl.textContent = app.desc || '';
+
+        // Thumb — try real image, fall back to SVG placeholder
+        thumb.style.display = 'block';
+        svgPh.style.display = 'none';
+        thumb.src = CATALOG_THUMB_BASE + app.num + '-' + app.slug + '.png';
+        thumb.alt = app.name;
+
+        // Build SVG placeholder for modal (reuses card colors, bigger viewport)
+        var gradId = 'modal-grad-' + app.num;
+        var accent = app.accent || '#ffc830';
+        var c1     = app.c1    || '#0d0b1a';
+        var c2     = app.c2    || '#07060f';
+        svgPh.setAttribute('viewBox', '0 0 800 450');
+        svgPh.innerHTML =
+          '<defs><linearGradient id="' + gradId + '" x1="0%" y1="0%" x2="100%" y2="100%">' +
+          '<stop offset="0%" stop-color="' + c1 + '"/>' +
+          '<stop offset="100%" stop-color="' + c2 + '"/>' +
+          '</linearGradient></defs>' +
+          '<rect width="800" height="450" fill="url(#' + gradId + ')"/>' +
+          '<circle cx="640" cy="100" r="160" fill="' + accent + '" opacity="0.06"/>' +
+          '<text x="400" y="290" font-family="\'Bebas Neue\',Impact,fantasy" font-size="160"' +
+          ' fill="white" opacity="0.04" text-anchor="middle" letter-spacing="4">' + app.num + '</text>' +
+          '<text x="40" y="44" font-family="\'Bebas Neue\',Impact,fantasy" font-size="11"' +
+          ' fill="' + accent + '" opacity="0.4" letter-spacing="3">' + app.name.toUpperCase() + ' · PLACEHOLDER · REPLACE WITH ' + app.num + '-' + app.slug + '.png</text>';
+
+        // CTA button
+        if (app.url && app.url !== '#') {
+          ctaEl.href = app.url;
+          ctaEl.textContent = 'Visit ' + app.name + ' →';
+          ctaEl.classList.remove('disabled');
+        } else {
+          ctaEl.href = '#';
+          ctaEl.textContent = 'Coming Soon';
+          ctaEl.classList.add('disabled');
+        }
+
+        // Open
+        backdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      } catch(e) {
+        console.error('openModal(): failed —', e);
+      }
+    }
+
+    // READS: #modal-backdrop  WRITES: classList, body.overflow
+    function closeModal() {
+      try {
+        var backdrop = document.getElementById('modal-backdrop');
+        if (backdrop) { backdrop.classList.remove('open'); }
+        document.body.style.overflow = '';
+      } catch(e) {
+        console.error('closeModal(): failed —', e);
+      }
+    }
+
+    // READS: DOM  WRITES: event listeners on modal close btn + backdrop
+    function initModal() {
+      try {
+        var closeBtn = document.getElementById('modal-close');
+        var backdrop = document.getElementById('modal-backdrop');
+        var box      = document.getElementById('modal-box');
+        if (!closeBtn || !backdrop || !box) { console.error('initModal(): elements missing'); return; }
+
+        closeBtn.addEventListener('click', closeModal);
+
+        // Click backdrop outside box to close
+        backdrop.addEventListener('click', function(e) {
+          if (e.target === backdrop) { closeModal(); }
+        });
+
+        // ESC key to close
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') { closeModal(); }
+        });
+
+        // Featured cards also open modal — wire by slug index lookup
+        // READS: .featured-card[data-modal-index]  WRITES: openModal call
+        var featuredCards = document.querySelectorAll('.featured-card[data-modal-index]');
+        for (var i = 0; i < featuredCards.length; i++) {
+          (function(card) {
+            card.addEventListener('click', function() {
+              var idx = parseInt(card.getAttribute('data-modal-index'), 10);
+              if (!isNaN(idx)) { openModal(idx); }
+            });
+          })(featuredCards[i]);
+        }
+      } catch(e) {
+        console.error('initModal(): failed —', e);
       }
     }
 
@@ -1311,12 +1916,62 @@
       }
     }
 
+    /* ===== KONAMI CODE ===== */
+    // READS: keydown events  WRITES: #konami-overlay classList
+    // Sequence: ↑ ↑ ↓ ↓ ← → ← → B A
+    var KONAMI_SEQ  = [38,38,40,40,37,39,37,39,66,65];
+    var konamiPos   = 0;
+
+    function initKonami() {
+      try {
+        document.addEventListener('keydown', function(e) {
+          if (e.keyCode === KONAMI_SEQ[konamiPos]) {
+            konamiPos++;
+            if (konamiPos === KONAMI_SEQ.length) {
+              konamiPos = 0;
+              openKonami();
+            }
+          } else {
+            konamiPos = (e.keyCode === KONAMI_SEQ[0]) ? 1 : 0;
+          }
+        });
+      } catch(e) {
+        console.error('initKonami(): failed —', e);
+      }
+    }
+
+    // READS: nothing  WRITES: #konami-overlay, body.overflow
+    function openKonami() {
+      try {
+        var overlay = document.getElementById('konami-overlay');
+        if (!overlay) { console.error('openKonami(): overlay missing'); return; }
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      } catch(e) {
+        console.error('openKonami(): failed —', e);
+      }
+    }
+
+    // READS: nothing  WRITES: #konami-overlay, body.overflow
+    function closeKonami() {
+      try {
+        var overlay = document.getElementById('konami-overlay');
+        if (!overlay) return;
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      } catch(e) {
+        console.error('closeKonami(): failed —', e);
+      }
+    }
+
     /* ===== BOOT ===== */
     document.addEventListener('DOMContentLoaded', function() {
       renderCatalog();
+      initModal();
       initHamburger();
       initScrollSpy();
       initReveal();
+      initKonami();
     });
   </script>
 
