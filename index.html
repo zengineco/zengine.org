@@ -3,12 +3,12 @@
 <head>
   <!-- =========================================================
     WORKFLOW STACK
-    File:       zengine_v1.6.0.html
+    File:       zengine_v1.7.0.html
     Brand:      Zengine™
     Author:     © 2026 Zengine™ | www.zengine.org
-    Version:    v1.6.0
-    Date:       2026-03-24
-    /* ===== LAST STABLE: v1.5.0 — 2026-03-24 ===== */
+    Version:    v1.7.0
+    Date:       2026-03-29
+    /* ===== LAST STABLE: v1.6.1 — 2026-03-24 ===== */
     Target:     Desktop-primary, mobile responsive (hamburger only)
     Browser:    Chrome 100+, Firefox 100+, Safari 15+
 
@@ -678,6 +678,137 @@
       margin-right: 6px;
     }
 
+    /* ===== MODULIGN HERO SECTION ===== */
+    #modulign {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--bg);
+      border-bottom: 1px solid var(--muted2);
+    }
+
+    /* Particle-like background grid */
+    .mod-grid {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,200,48,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,200,48,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at 60% 50%, black 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at 60% 50%, black 30%, transparent 75%);
+    }
+
+    .mod-image-wrap {
+      position: absolute;
+      right: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: clamp(340px, 48%, 620px);
+      pointer-events: none;
+    }
+    .mod-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      opacity: 0.88;
+      filter: drop-shadow(0 0 80px rgba(255,200,48,0.18));
+    }
+    /* SVG fallback for modulign image */
+    .mod-image-svg {
+      width: 100%;
+      aspect-ratio: 4/3;
+    }
+
+    .mod-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 80px;
+      max-width: 620px;
+    }
+    .mod-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.1s var(--ease-out) forwards;
+    }
+    .mod-headline {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 7vw, 96px);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.25s var(--ease-out) forwards;
+    }
+    .mod-headline em {
+      color: var(--gold);
+      font-style: normal;
+      display: block;
+      font-size: 0.55em;
+      letter-spacing: 0.1em;
+      margin-top: 6px;
+    }
+    .mod-desc {
+      font-family: var(--font-body);
+      font-size: clamp(15px, 1.8vw, 18px);
+      font-weight: 300;
+      line-height: 1.65;
+      color: rgba(242,240,255,0.7);
+      max-width: 480px;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.4s var(--ease-out) forwards;
+    }
+    .mod-cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.55s var(--ease-out) forwards;
+    }
+    .mod-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 20px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.7s var(--ease-out) forwards;
+    }
+    .mod-status::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 8px rgba(255,200,48,0.6);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    @media (max-width: 768px) {
+      #modulign { min-height: auto; padding: 80px 0 60px; }
+      .mod-content { padding: 0 28px; max-width: 100%; }
+      .mod-image-wrap { display: none; }
+      .mod-grid { display: none; }
+    }
+
     /* ===== FOOTER ===== */
     footer {
       padding: 40px 80px;
@@ -1081,6 +1212,9 @@
     </div>
 
     <ul class="nav-links">
+      <li><a href="#modulign" data-section="modulign">
+        <span class="nav-icon">◆</span> Modulign
+      </a></li>
       <li><a href="#hero" class="active" data-section="hero">
         <span class="nav-icon">◈</span> Home
       </a></li>
@@ -1112,6 +1246,75 @@
 
   <!-- MAIN CONTENT -->
   <main id="main">
+
+    <!-- MODULIGN — #1 FEATURE -->
+    <section id="modulign">
+      <div class="mod-grid" aria-hidden="true"></div>
+
+      <!-- Right-side image — swap to /assets/00-modulign.png -->
+      <div class="mod-image-wrap" aria-hidden="true">
+        <img class="mod-image" src="/assets/00-modulign.png" alt=""
+          onerror="this.style.display='none';this.nextElementSibling.style.removeProperty('display');" />
+        <svg class="mod-image-svg" style="display:none" viewBox="0 0 560 420"
+          xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="mod-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1a0e00"/>
+              <stop offset="100%" stop-color="#07060f"/>
+            </linearGradient>
+          </defs>
+          <rect width="560" height="420" fill="url(#mod-grad)" rx="8"/>
+          <!-- DAG-OR grid visualization -->
+          <g opacity="0.5">
+            <rect x="40"  y="60"  width="80" height="28" rx="4" fill="none" stroke="#ffc830" stroke-width="1"/>
+            <rect x="160" y="60"  width="80" height="28" rx="4" fill="none" stroke="#ffc830" stroke-width="1"/>
+            <rect x="280" y="60"  width="80" height="28" rx="4" fill="none" stroke="#3b8fff" stroke-width="1"/>
+            <rect x="400" y="60"  width="80" height="28" rx="4" fill="none" stroke="#3b8fff" stroke-width="1"/>
+            <line x1="80"  y1="88" x2="80"  y2="130" stroke="#ffc830" stroke-width="1" opacity="0.4"/>
+            <line x1="200" y1="88" x2="200" y2="130" stroke="#ffc830" stroke-width="1" opacity="0.4"/>
+            <line x1="320" y1="88" x2="320" y2="130" stroke="#3b8fff" stroke-width="1" opacity="0.4"/>
+            <line x1="440" y1="88" x2="440" y2="130" stroke="#3b8fff" stroke-width="1" opacity="0.4"/>
+            <rect x="100" y="130" width="160" height="28" rx="4" fill="none" stroke="#ffc830" stroke-width="1.5"/>
+            <rect x="280" y="130" width="160" height="28" rx="4" fill="none" stroke="#3b8fff" stroke-width="1.5"/>
+            <line x1="180" y1="158" x2="180" y2="220" stroke="#ffc830" stroke-width="1" opacity="0.4"/>
+            <line x1="360" y1="158" x2="360" y2="220" stroke="#3b8fff" stroke-width="1" opacity="0.4"/>
+            <line x1="180" y1="220" x2="360" y2="220" stroke="#e040fb" stroke-width="1" opacity="0.3"/>
+            <rect x="200" y="220" width="160" height="32" rx="4" fill="#ffc830" opacity="0.08" stroke="#ffc830" stroke-width="1.5"/>
+            <text x="280" y="241" font-family="'Bebas Neue',Impact,fantasy" font-size="13" fill="#ffc830" opacity="0.7" text-anchor="middle" letter-spacing="2">DAG-OR v3</text>
+          </g>
+          <!-- Address string -->
+          <text x="40" y="310" font-family="'Share Tech Mono','Courier New',monospace" font-size="11" fill="#ffc830" opacity="0.35" letter-spacing="1">[ reality :: observable :: addressed ]</text>
+          <text x="40" y="330" font-family="'Share Tech Mono','Courier New',monospace" font-size="11" fill="#3b8fff" opacity="0.3" letter-spacing="1">{ node.parent.domain.instance }</text>
+          <!-- watermark -->
+          <text x="280" y="395" font-family="'Bebas Neue',Impact,fantasy" font-size="48" fill="white" opacity="0.03" text-anchor="middle" letter-spacing="4">MODULIGN</text>
+          <text x="40" y="30" font-family="'Bebas Neue',Impact,fantasy" font-size="9" fill="#ffc830" opacity="0.35" letter-spacing="3">00 · PLACEHOLDER · REPLACE WITH 00-modulign.png</text>
+        </svg>
+      </div>
+
+      <div class="mod-content">
+        <div class="mod-eyebrow">Modulign Standard · DAG-OR v3 · Active Research</div>
+        <h2 class="mod-headline">
+          A Grammar<br/>for Reality.
+          <em>modulign.org</em>
+        </h2>
+        <p class="mod-desc">
+          The Modulign Standard is a universal address grammar for observable reality —
+          a structured, hierarchical notation system capable of uniquely addressing
+          any node in any domain, physical or conceptual. DAG-OR v3 is its current
+          working form, with an accompanying philosophical paper applying the standard
+          to the Gettier problem in epistemology. The most intellectually ambitious
+          project in the Zengine catalog.
+        </p>
+        <div class="mod-cta-row">
+          <a href="https://modulign.org" target="_blank" rel="noopener noreferrer"
+            class="btn-primary" onclick="var w=window.open('https://modulign.org','_blank','noopener,noreferrer');if(w)w.opener=null;">
+            Visit modulign.org →
+          </a>
+          <a href="#featured" class="btn-ghost">See the Studio</a>
+        </div>
+        <div class="mod-status">Active research · DAG-OR v3 in progress</div>
+      </div>
+    </section>
 
     <!-- HERO -->
     <section id="hero">
@@ -1408,6 +1611,18 @@
           <a href="https://zengine.site" target="_blank" rel="noopener noreferrer">
             <span class="biz-name">Zengine.site</span>
             <span class="biz-desc">Streaming platform — launch your career into multiplatform dominance</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://trailer-load.com" target="_blank" rel="noopener noreferrer">
+            <span class="biz-name">Trailer-Load.com</span>
+            <span class="biz-desc">Lock-In — browser-based freight trailer loading simulator</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://poticas.com" target="_blank" rel="noopener noreferrer">
+            <span class="biz-name">Poticas.com</span>
+            <span class="biz-desc">Community, shop, and something hidden for those who look</span>
           </a>
         </li>
       </ul>
